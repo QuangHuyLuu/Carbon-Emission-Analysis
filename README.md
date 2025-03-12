@@ -13,6 +13,56 @@ SELECT * FROM product_emissions LIMIT 5;
 | 10261-1-2017 | 14         | 16         | 25                | 2017 | Multifunction Printers                                          | 110       | 1488                 | 30.65                      | 5.51                         | 63.84                        | 
 | 10261-2-2017 | 14         | 16         | 25                | 2017 | Multifunction Printers                                          | 110       | 1818                 | 25.08                      | 4.51                         | 70.41                        | 
 
+Table 'industry_groups'
+```sql
+SELECT * FROM industry_groups LIMIT 10
+```
+| id | industry_group                                                         | 
+| -: | ---------------------------------------------------------------------: | 
+| 1  | "Consumer Durables, Household and Personal Products"                   | 
+| 2  | "Food, Beverage & Tobacco"                                             | 
+| 3  | "Forest and Paper Products - Forestry, Timber, Pulp and Paper, Rubber" | 
+| 4  | "Mining - Iron, Aluminum, Other Metals"                                | 
+| 5  | "Pharmaceuticals, Biotechnology & Life Sciences"                       | 
+| 6  | "Textiles, Apparel, Footwear and Luxury Goods"                         | 
+| 7  | Automobiles & Components                                               | 
+| 8  | Capital Goods                                                          | 
+| 9  | Chemicals                                                              | 
+| 10 | Commercial & Professional Services                                     | 
+
+Table 'companies'
+```sql
+SELECT * FROM companies LIMIT 10
+```
+| id | company_name                                   | 
+| -: | ---------------------------------------------: | 
+| 1  | "Autodesk, Inc."                               | 
+| 2  | "Casio Computer Co., Ltd."                     | 
+| 3  | "Cisco Systems, Inc."                          | 
+| 4  | "CNX Coal Resources, LP"                       | 
+| 5  | "Coca-Cola Enterprises, Inc."                  | 
+| 6  | "Compañía Española de Petróleos, S.A.U. CEPSA" | 
+| 7  | "Daikin Industries, Ltd."                      | 
+| 8  | "Elitegroup computer systems co., Ltd."        | 
+| 9  | "Fuji Xerox Co., Ltd."                         | 
+| 10 | "Gamesa Corporación Tecnológica, S.A."         | 
+
+Table 'countries'
+```sql
+SELECT * FROM countries LIMIT 10
+```
+| id | country_name | 
+| -: | -----------: | 
+| 1  | Australia    | 
+| 2  | Belgium      | 
+| 3  | Brazil       | 
+| 4  | Canada       | 
+| 5  | Chile        | 
+| 6  | China        | 
+| 7  | Colombia     | 
+| 8  | Finland      | 
+| 9  | France       | 
+| 10 | Germany      | 
 ## 2. Carbon Emission Data Analysis
 ### 1. Which products contribute the most to carbon emissions?
 ```sql
