@@ -14,7 +14,7 @@ SELECT * FROM product_emissions LIMIT 5;
 | 10261-2-2017 | 14         | 16         | 25                | 2017 | Multifunction Printers                                          | 110       | 1818                 | 25.08                      | 4.51                         | 70.41                        | 
 
 ## 2. Carbon Emission Data Analysis
-###Which products contribute the most to carbon emissions?
+### 1.Which products contribute the most to carbon emissions?
 ```sql
 SELECT product_name,ROUND(AVG(carbon_footprint_pcf),2) AS "Average PCF"
 FROM product_emissions 
