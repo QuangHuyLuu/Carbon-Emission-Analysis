@@ -14,7 +14,7 @@ SELECT * FROM product_emissions LIMIT 5;
 | 10261-2-2017 | 14         | 16         | 25                | 2017 | Multifunction Printers                                          | 110       | 1818                 | 25.08                      | 4.51                         | 70.41                        | 
 
 ## 2. Carbon Emission Data Analysis
-### 1.Which products contribute the most to carbon emissions?
+### 1. Which products contribute the most to carbon emissions?
 ```sql
 SELECT product_name,ROUND(AVG(carbon_footprint_pcf),2) AS "Average PCF"
 FROM product_emissions 
@@ -34,3 +34,4 @@ LIMIT 10
 | Mercedes-Benz GLE (GLE 500 4MATIC)                                                                                                 | 91000.00    | 
 | Mercedes-Benz S-Class (S 500)                                                                                                      | 85000.00    | 
 | Mercedes-Benz SL (SL 350)                                                                                                          | 72000.00    | 
+Conclusion: Wind Turbines emited the most PCF,  Mercedes-Benzs also released considerable PCF into the environment.
