@@ -1,6 +1,6 @@
 # Carbon-Emission-Analysis
 
-##1. Explore Data
+## 1. Explore Data
 Query
 '''sql
 SELECT * FROM product_emissions LIMIT 5;
