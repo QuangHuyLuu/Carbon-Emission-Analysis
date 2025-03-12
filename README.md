@@ -134,4 +134,72 @@ LIMIT 10;
 | Media                                            | 1534.47     | 
 | Software & Services                              | 1368.94     | 
 
-Conclusion: Electrical Equipment and Machinery is the industry with the highest contribution to carbon emissions. Next, Automobiles & Components holds second position. It could be seen that "Pharmaceuticals, Biotechnology & Life Sciences" released colossal PCF and placed third position.
+Conclusion: Electrical Equipment and Machinery is the industry with the highest contribution to carbon emissions. Next, Automobiles & Components holds second position. It could be seen that "Pharmaceuticals, Biotechnology & Life Sciences" released colossal PCF and placed third position. The products with the highest levels of carbon emissions are typically associated with heavy industry.
+
+### 4. What are the companies with the highest contribution to carbon emissions?
+```sql
+SELECT companies.company_name, ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "Average PCF" 
+FROM companies
+JOIN product_emissions
+ON product_emissions.company_id = companies.id
+GROUP BY company_name
+ORDER BY AVG(product_emissions.carbon_footprint_pcf) DESC
+LIMIT 10;
+```
+| company_name                           | Average PCF | 
+| -------------------------------------: | ----------: | 
+| "Gamesa Corporación Tecnológica, S.A." | 2444616.00  | 
+| "Hino Motors, Ltd."                    | 191687.00   | 
+| Arcelor Mittal                         | 83503.50    | 
+| Weg S/A                                | 53551.67    | 
+| Daimler AG                             | 43089.19    | 
+| General Motors Company                 | 34251.75    | 
+| Volkswagen AG                          | 26238.40    | 
+| Waters Corporation                     | 24162.00    | 
+| "Daikin Industries, Ltd."              | 17600.00    | 
+| CJ Cheiljedang                         | 15802.83    | 
+
+Conclusion: Gamesa Corporación Tecnológica, S.A. is the company with the highest contribution to carbon emissions. After that, Hino Motors, Ltd also emitted a huge amount of PCF into the environment.
+
+### 5. What are the countries with the highest contribution to carbon emissions?
+```sql
+SELECT countries.country_name, ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "Average PCF" 
+FROM countries
+JOIN product_emissions
+ON product_emissions.country_id = countries.id
+GROUP BY country_name
+ORDER BY AVG(product_emissions.carbon_footprint_pcf) DESC
+LIMIT 10;
+```
+| country_name | Average PCF | 
+| -----------: | ----------: | 
+| Spain        | 699009.29   | 
+| Luxembourg   | 83503.50    | 
+| Germany      | 33600.37    | 
+| Brazil       | 9407.61     | 
+| South Korea  | 5665.61     | 
+| Japan        | 4600.26     | 
+| Netherlands  | 2011.91     | 
+| India        | 1535.88     | 
+| USA          | 1332.60     | 
+| South Africa | 1119.27     | 
+Conclusion: Spain is the country with the highest contribution to carbon emissions
+
+### 6. What is the trend of carbon footprints (PCFs) over the years?
+```sql
+SELECT year, carbon_footprint_pcf 
+FROM product_emissions
+GROUP BY year
+ORDER BY year;
+```
+| year | carbon_footprint_pcf | 
+| ---: | -------------------: | 
+| 2013 | 73                   | 
+| 2014 | 2                    | 
+| 2015 | 2                    | 
+| 2016 | 10000                | 
+| 2017 | 1488                 | 
+
+Conclusion: There appears to be a sharp upward trend in 2016, which could indicate an extraordinary incident or reporting change. After the peak in 2016, the carbon footprint returns to a more moderate but still relatively high level in 2017. Overall, the trend suggests irregularities, possibly due to specific events in 2016 that led to the sudden surge, and a correction or decrease following that spike.
+
+### 7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
