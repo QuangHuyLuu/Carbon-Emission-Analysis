@@ -34,4 +34,4 @@ LIMIT 10
 | Mercedes-Benz GLE (GLE 500 4MATIC)                                                                                                 | 91000.00    | 
 | Mercedes-Benz S-Class (S 500)                                                                                                      | 85000.00    | 
 | Mercedes-Benz SL (SL 350)                                                                                                          | 72000.00    | 
-Conclusion: Wind Turbines emited the most PCF,  Mercedes-Benzs also released considerable PCF into the environment.
+```Conclusion: Wind Turbines emited the most PCF,  Mercedes-Benzs also released considerable PCF into the environment.```
