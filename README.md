@@ -110,3 +110,28 @@ LIMIT 10;
 | Automobiles & Components           | Mercedes-Benz SL (SL 350)                                                                                                          | 
 
 Conclusion: Industry Groups emitting the most PCF focus on Electrical Equipment and Machinery, Automobiles & Components, Materials, Automobiles & Components.
+
+### 3. What are the industries with the highest contribution to carbon emissions?
+```sql
+SELECT industry_groups.industry_group, ROUND(AVG(product_emissions.carbon_footprint_pcf),2) AS "Average PCF"
+from industry_groups
+JOIN product_emissions
+ON product_emissions.industry_group_id = industry_groups.id
+GROUP BY industry_groups.industry_group
+ORDER BY AVG(product_emissions.carbon_footprint_pcf) DESC
+LIMIT 10;
+```
+| industry_group                                   | Average PCF | 
+| -----------------------------------------------: | ----------: | 
+| Electrical Equipment and Machinery               | 891050.73   | 
+| Automobiles & Components                         | 35373.48    | 
+| "Pharmaceuticals, Biotechnology & Life Sciences" | 24162.00    | 
+| Capital Goods                                    | 7391.77     | 
+| Materials                                        | 3208.86     | 
+| "Mining - Iron, Aluminum, Other Metals"          | 2727.00     | 
+| Energy                                           | 2154.80     | 
+| Chemicals                                        | 1949.03     | 
+| Media                                            | 1534.47     | 
+| Software & Services                              | 1368.94     | 
+
+Conclusion: Electrical Equipment and Machinery is the industry with the highest contribution to carbon emissions. Next, Automobiles & Components holds second position. It could be seen that "Pharmaceuticals, Biotechnology & Life Sciences" released colossal PCF and placed third position.
