@@ -203,3 +203,36 @@ ORDER BY year;
 Conclusion: There appears to be a sharp upward trend in 2016, which could indicate an extraordinary incident or reporting change. After the peak in 2016, the carbon footprint returns to a more moderate but still relatively high level in 2017. Overall, the trend suggests irregularities, possibly due to specific events in 2016 that led to the sudden surge, and a correction or decrease following that spike.
 
 ### 7. Which industry groups has demonstrated the most notable decrease in carbon footprints (PCFs) over time?
+```sql
+SELECT 
+    industry_groups.industry_group, 
+    ROUND(AVG(CASE WHEN product_emissions.year = (SELECT MIN(year) FROM product_emissions WHERE product_emissions.industry_group_id = industry_groups.id) 
+                  THEN product_emissions.carbon_footprint_pcf ELSE NULL END), 2) AS start_year_pcf,
+    ROUND(AVG(CASE WHEN product_emissions.year = (SELECT MAX(year) FROM product_emissions WHERE product_emissions.industry_group_id = industry_groups.id) 
+                  THEN product_emissions.carbon_footprint_pcf ELSE NULL END), 2) AS end_year_pcf,
+    ROUND(AVG(CASE WHEN product_emissions.year = (SELECT MIN(year) FROM product_emissions WHERE product_emissions.industry_group_id = industry_groups.id) 
+                  THEN product_emissions.carbon_footprint_pcf ELSE NULL END), 2)
+    - ROUND(AVG(CASE WHEN product_emissions.year = (SELECT MAX(year) FROM product_emissions WHERE product_emissions.industry_group_id = industry_groups.id) 
+                  THEN product_emissions.carbon_footprint_pcf ELSE NULL END), 2) AS decrease_in_carbon_footprint
+FROM product_emissions
+JOIN industry_groups 
+    ON industry_groups.id = product_emissions.industry_group_id
+GROUP BY industry_groups.industry_group
+ORDER BY decrease_in_carbon_footprint DESC
+LIMIT 10;
+```
+| industry_group                                                         | start_year_pcf | end_year_pcf | decrease_in_carbon_footprint | 
+| ---------------------------------------------------------------------: | -------------: | -----------: | ---------------------------: | 
+| Media                                                                  | 2411.25        | 602.67       | 1808.58                      | 
+| Technology Hardware & Equipment                                        | 1053.45        | 788.34       | 265.11                       | 
+| Consumer Durables & Apparel                                            | 286.70         | 40.07        | 246.63                       | 
+| Food & Staples Retailing                                               | 77.30          | 0.50         | 76.80                        | 
+| Semiconductors & Semiconductor Equipment                               | 16.67          | 2.00         | 14.67                        | 
+| Telecommunication Services                                             | 52.00          | 45.75        | 6.25                         | 
+| Retailing                                                              | 6.33           | 5.50         | 0.83                         | 
+| Utilities                                                              | 61.00          | 61.00        | 0.00                         | 
+| "Forest and Paper Products - Forestry, Timber, Pulp and Paper, Rubber" | 685.31         | 685.31       | 0.00                         | 
+| Electrical Equipment and Machinery                                     | 891050.73      | 891050.73    | 0.00                         | 
+
+Conclusion: Media group showed the most incredible decreasing in carbon footprint over the period. While Technology Hardware & Equipment field could be seen positive signal in reducing carbon footprint. On the other hand, there are a few industry groups that saw no reduction in their carbon footprint. Utilities and Forest and Paper Products - Forestry, Timber, Pulp and Paper, Rubber both saw no change in their PCFs, maintaining the same levels in both the start and end years. Electrical Equipment and Machinery also demonstrated no reduction, though its PCF is exceptionally high compared to the other groups.
+
